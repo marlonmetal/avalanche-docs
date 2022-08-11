@@ -7,7 +7,7 @@ decription: In this doc, learn how to run offline pruning on your node to reduce
 
 It is possible to provide parameters for a Subnet. Parameters here apply to all chains in the specified Subnet.
 
-AvalancheGo looks for files specified with `{subnetID}.json` under `--subnet-config-dir` as documented [here](./avalanchego-config-flags.md#subnet-configs).
+MetalGo looks for files specified with `{subnetID}.json` under `--subnet-config-dir` as documented [here](./metalgo-config-flags.md#subnet-configs).
 
 Here is an example of Subnet config file:
 
@@ -30,7 +30,7 @@ Here is an example of Subnet config file:
 
 If `true` this node does not expose Subnet blockchain contents to non-validators via P2P messages. Defaults to `false`.
 
-Avalanche Subnets are public by default. It means that every node can sync and listen ongoing transactions/blocks in Subnets, even they're not validating the listened Subnet.
+Metal Subnets are public by default. It means that every node can sync and listen ongoing transactions/blocks in Subnets, even they're not validating the listened Subnet.
 
 Subnet validators can choose not to publish contents of blockchains via this configuration. If a node sets `validatorOnly` to true, the node exchanges messages only with this Subnet's validators. Other peers will not be able to learn contents of this Subnet from this node.
 
@@ -40,7 +40,7 @@ This is a node-specific configuration. Every validator of this Subnet has to use
 
 ### Consensus Parameters
 
-Subnet configs supports loading new consensus parameters. JSON keys are different from their matching `CLI` keys. These parameters must be grouped under `consensusParameters` key. The consensus parameters of a Subnet default to the same values used for the Primary Network, which are given [CLI Snow Parameters](./avalanchego-config-flags.md#snow-parameters).
+Subnet configs supports loading new consensus parameters. JSON keys are different from their matching `CLI` keys. These parameters must be grouped under `consensusParameters` key. The consensus parameters of a Subnet default to the same values used for the Primary Network, which are given [CLI Snow Parameters](./metalgo-config-flags.md#snow-parameters).
 
 | CLI Key                             | JSON Key                 |
 | :---------------------------------- | :----------------------- |
@@ -59,7 +59,7 @@ Subnet configs supports loading new consensus parameters. JSON keys are differen
 
 ### Gossip Configs
 
-It's possible to define different Gossip configurations for each Subnet without changing values for Primary Network. For example in Primary Network transaction mempools are not gossipped to non-validators (`--consensus-app-gossip-non-validator-size` is `0`). You can change this for your Subnet and share mempool with non-validators as well. JSON keys of these parameters are different from their matching `CLI` keys. These parameters default to the same values used for the Primary Network. For more information see [CLI Gossip Configs](./avalanchego-config-flags.md#gossiping).
+It's possible to define different Gossip configurations for each Subnet without changing values for Primary Network. For example in Primary Network transaction mempools are not gossipped to non-validators (`--consensus-app-gossip-non-validator-size` is `0`). You can change this for your Subnet and share mempool with non-validators as well. JSON keys of these parameters are different from their matching `CLI` keys. These parameters default to the same values used for the Primary Network. For more information see [CLI Gossip Configs](./metalgo-config-flags.md#gossiping).
 
 | CLI Key                                                 | JSON Key                               |
 | :------------------------------------------------------ | :------------------------------------- |

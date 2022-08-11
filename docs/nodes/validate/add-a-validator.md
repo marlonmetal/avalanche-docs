@@ -6,9 +6,9 @@ sidebar_position: 3
 
 ## Introduction
 
-The [Primary Network](https://support.avax.network/en/articles/4135650-what-is-the-primary-network) is inherent to the Avalanche platform and validates Avalanche’s [built-in blockchains](../../overview/getting-started/avalanche-platform.md). In this tutorial, we’ll add a node to the Primary Network on Avalanche.
+The Primary Network is inherent to the Metal platform and validates Metal's [built-in blockchains](../../overview/getting-started/intro.md). In this tutorial, we’ll add a node to the Primary Network on Metal.
 
-The P-Chain manages metadata on Avalanche. This includes tracking which nodes are in which Subnets, which blockchains exist, and which Subnets are validating which blockchains. To add a validator, we’ll issue [transactions](http://support.avalabs.org/en/articles/4587384-what-is-a-transaction) to the P-Chain.
+The P-Chain manages metadata on Metal. This includes tracking which nodes are in which Subnets, which blockchains exist, and which Subnets are validating which blockchains. To add a validator, we’ll issue [transactions](http://support.avalabs.org/en/articles/4587384-what-is-a-transaction) to the P-Chain.
 
 :::warning
 Note that once you issue the transaction to add a node as a validator, there is no way to change the parameters. **You can’t remove your stake early or change the stake amount, node ID, or reward address.** Please make sure you’re using the correct values in the API calls below. If you’re not sure, feel free to join our [Discord](https://chat.avalabs.org/) to ask questions.
@@ -16,7 +16,7 @@ Note that once you issue the transaction to add a node as a validator, there is 
 
 ## Requirements
 
-You've completed [Run an Avalanche Node](../build/run-avalanche-node-manually.md) and are familiar with [Avalanche's architecture](../../overview/getting-started/avalanche-platform.md). In this tutorial, we use [AvalancheJS](../../apis/avalanchejs/README.md) and [Avalanche’s Postman collection](https://github.com/ava-labs/avalanche-postman-collection) to help us make API calls.
+You've completed [Run an Avalanche Node](../build/run-metal-node-manually.md) and are familiar with [Avalanche's architecture](../../overview/getting-started/intro.md).
 
 In order to ensure your node is well-connected, make sure that your node can receive and send TCP traffic on the staking port (`9651` by default) and that you started your node with config flag `--public-ip=[YOUR NODE'S PUBLIC IP HERE]`. Failing to do either of these may jeopardize your staking reward.
 
@@ -26,7 +26,7 @@ First, we show you how to add your node as a validator by using [Avalanche Walle
 
 ### Retrieve the Node ID
 
-Get your node’s ID by calling [`info.getNodeID`](../../apis/avalanchego/apis/info.md#infogetnodeid):
+Get your node’s ID by calling [`info.getNodeID`](../../apis/metalgo/apis/info.md#infogetnodeid):
 
 ```sh
 curl -X POST --data '{
@@ -56,19 +56,19 @@ Fill out the staking parameters. They are explained in more detail in [this doc]
 
 You should a success message, and your balance should be updated.
 
-Calling [`platform.getPendingValidators`](../../apis/avalanchego/apis/p-chain.md#platformgetpendingvalidators) verifies that your transaction was accepted. Note that this API call should be made before your node's validation start time, otherwise, the return will not include your node's id as it is no longer pending.
+Calling [`platform.getPendingValidators`](../../apis/metalgo/apis/p-chain.md#platformgetpendingvalidators) verifies that your transaction was accepted. Note that this API call should be made before your node's validation start time, otherwise, the return will not include your node's id as it is no longer pending.
 
 Go back to the `Earn` tab, and click `Estimated Rewards`.
 
 Once your validator’s start time has passed, you will see the rewards it may earn, as well as its start time, end time, and the percentage of its validation period that has passed.
 
-You can also call [`platform.getCurrentValidators`](../../apis/avalanchego/apis/p-chain.md#platformgetcurrentvalidators) to check that your node's id is included in the response.
+You can also call [`platform.getCurrentValidators`](../../apis/metalgo/apis/p-chain.md#platformgetcurrentvalidators) to check that your node's id is included in the response.
 
 That’s it!
 
 ## Add a Validator with AvalancheJS
 
-We can also add a node to the validator set using [AvalancheJS](../../apis/avalanchejs/README.md).
+We can also add a node to the validator set using AvalancheJS.
 
 ### Install AvalancheJS
 
@@ -110,7 +110,7 @@ const privKey: string = "<YOUR-PRIVATE-KEY-HERE>"
 
 #### Network Setting
 
-The following settings work when using a local node started with [`--network-id=fuji`](../../nodes/maintain/avalanchego-config-flags.md#network-id):
+The following settings work when using a local node started with [`--network-id=tahoe`](../../nodes/maintain/metalgo-config-flags.md#network-id):
 
 ```js
 const ip: string = "localhost"
@@ -119,7 +119,7 @@ const protocol: string = "http"
 const networkID: number = 5
 ```
 
-However, to connect directly to the [Avalanche Fuji Testnet API server](../../apis/avalanchego/public-api-server.md), the following changes are needed:
+However, to connect directly to the [Avalanche Fuji Testnet API server](../../apis/metalgo/public-api-server.md), the following changes are needed:
 
 ```js
 const ip: string = "api.avax-test.network"
@@ -134,8 +134,6 @@ _Example Address: 5 - X-`fuji`19rknw8l0grnfunjrzwxlxync6zrlu33yxqzg0h_
 
 For Fuji Testnet, 5 is the correct value to use.
 
-To learn more about encoded addresses, click [here](../../apis/avalanchejs/manage-x-chain-keys.md#encode-bech32-addresses).
-
 #### Settings for Validation
 
 Next we need to specify the node's validation period and delegation fee.
@@ -149,7 +147,7 @@ const delegationFee: number = 10
 
 #### Node ID
 
-This is the node ID of the validator being added. See [above section](#retrieve-the-node-id) on how to retrieve the node id by using API [`info.getNodeID`](../../apis/avalanchego/apis/info.md#infogetnodeid).
+This is the node ID of the validator being added. See [above section](#retrieve-the-node-id) on how to retrieve the node id by using API [`info.getNodeID`](../../apis/metalgo/apis/info.md#infogetnodeid).
 
 #### Staking Period
 
@@ -347,6 +345,6 @@ const unsignedTx: UnsignedTx = await pchain.buildAddValidatorTx(
 The Fuji workflow above can be adapted to Mainnet with the following modifications:
 
 - The correct private key.
-- Network setting should be to a Mainnet node, either [a local node on Mainnet](../../nodes/maintain/avalanchego-config-flags.md#network-id) or [Avalanche Mainnet API server](../../apis/avalanchego/public-api-server.md#using-the-public-api-nodes) where `api.avax.network` should be used for the `ip`.
-- `const networkID: number = 1` based on [this](../../apis/avalanchejs/manage-x-chain-keys.md#encode-bech32-addresses).
+- Network setting should be to a Mainnet node, either [a local node on Mainnet](../../nodes/maintain/metalgo-config-flags.md#network-id) or [Avalanche Mainnet API server](../../apis/metalgo/public-api-server.md#using-the-public-api-nodes) where `api.metalblockchain.org` should be used for the `ip`.
+- `const networkID: number = 1`.
 - Set the correct amount to stake.

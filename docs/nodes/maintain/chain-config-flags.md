@@ -5,9 +5,9 @@ description: Reference for all available chain config options and flags.
 
 # Chain Configs
 
-Some chains allow the node operator to provide a custom configuration. AvalancheGo can read chain configurations from files and pass them to the corresponding chains on initialization.
+Some chains allow the node operator to provide a custom configuration. MetalGo can read chain configurations from files and pass them to the corresponding chains on initialization.
 
-AvalancheGo looks for these files in the directory specified by `--chain-config-dir` AvalancheGo flag, as documented [here](avalanchego-config-flags.md#--chain-config-dir-string). If omitted, value defaults to `$HOME/.avalanchego/configs/chains`. This directory can have sub-directories whose names are chain IDs or chain aliases. Each sub-directory contains the configuration for the chain specified in the directory name. Each sub-directory should contain a file named `config`, whose value is passed in when the corresponding chain is initialized (see below for extension). For example, config for the C-Chain should be at: `{chain-config-dir}/C/config.json`.
+MetalGo looks for these files in the directory specified by `--chain-config-dir` MetalGo flag, as documented [here](metalgo-config-flags.md#--chain-config-dir-string). If omitted, value defaults to `$HOME/.metalgo/configs/chains`. This directory can have sub-directories whose names are chain IDs or chain aliases. Each sub-directory contains the configuration for the chain specified in the directory name. Each sub-directory should contain a file named `config`, whose value is passed in when the corresponding chain is initialized (see below for extension). For example, config for the C-Chain should be at: `{chain-config-dir}/C/config.json`.
 
 This also applies to Subnets, for example, if a Subnet's chain id is `2ebCneCbwthjQ1rYT41nhd7M76Hc6YmosMAQrTFhBq8qeqh6tt`, the config for this chain should be at `{chain-config-dir}/2ebCneCbwthjQ1rYT41nhd7M76Hc6YmosMAQrTFhBq8qeqh6tt/config.json`
 
@@ -17,11 +17,11 @@ By default, none of these directories and/or files exist. You would need to crea
 
 :::
 
-The filename extension that these files should have, and the contents of these files, is VM-dependent. For example, some chains may expect `config.txt` while others expect `config.json`. If multiple files are provided with the same name but different extensions (e.g. `config.json` and `config.txt`) in the same sub-directory, AvalancheGo will exit with an error.
+The filename extension that these files should have, and the contents of these files, is VM-dependent. For example, some chains may expect `config.txt` while others expect `config.json`. If multiple files are provided with the same name but different extensions (e.g. `config.json` and `config.txt`) in the same sub-directory, MetalGo will exit with an error.
 
-For a given chain, AvalancheGo will look first for a config sub-directory whose name is the chain ID. If it isn't found, it looks for a config sub-directory whose name is the chain's primary alias. If it's not found, it looks for a config sub-directory whose name is another alias for the chain. All folder and file names are case sensitive.
+For a given chain, MetalGo will look first for a config sub-directory whose name is the chain ID. If it isn't found, it looks for a config sub-directory whose name is the chain's primary alias. If it's not found, it looks for a config sub-directory whose name is another alias for the chain. All folder and file names are case sensitive.
 
-Alternatively, for some setups it might be more convenient to provide config entirely via the command line. For that, you can use AvalancheGo `--chain-config-dir` flag, as documented [here](avalanchego-config-flags.md#--chain-config-content-string).
+Alternatively, for some setups it might be more convenient to provide config entirely via the command line. For that, you can use MetalGo `--chain-config-dir` flag, as documented [here](metalgo-config-flags.md#--chain-config-content-string).
 
 It is not required to provide these custom configurations. If they are not provided, a VM-specific default config will be used.
 
@@ -29,7 +29,7 @@ It is not required to provide these custom configurations. If they are not provi
 
 In order to specify a config for the C-Chain, a JSON config file should be placed at `{chain-config-dir}/C/config.json`.
 
-For example if `chain-config-dir` has the default value which is `$HOME/.avalanchego/configs/chains`, then `config.json` should be placed at `$HOME/.avalanchego/configs/chains/C/config.json`.
+For example if `chain-config-dir` has the default value which is `$HOME/.metalgo/configs/chains`, then `config.json` should be placed at `$HOME/.metalgo/configs/chains/C/config.json`.
 
 The default C-Chain config is:
 
@@ -102,7 +102,7 @@ Specifies the frequency to run the continuous profiler. Defaults to 15 minutes.
 
 Specifies the maximum number of profiles to keep before removing the oldest.
 
-### Enabling Avalanche Specific APIs
+### Enabling Metal Specific APIs
 
 #### `snowman-api-enabled` (boolean):
 
@@ -215,7 +215,7 @@ Adds the following RPC calls to the `net_*` namespace. Defaults to true.
 - `net_peerCount`
 - `net_version`
 
-Note: Coreth is a virtual machine and does not have direct access to the networking layer, so `net_listening` always returns true and `net_peerCount` always returns 0. For accurate metrics on the network layer, users should use the AvalancheGo APIs.
+Note: Coreth is a virtual machine and does not have direct access to the networking layer, so `net_listening` always returns true and `net_peerCount` always returns 0. For accurate metrics on the network layer, users should use the MetalGo APIs.
 
 #### `debug-tracer`:
 
@@ -517,7 +517,7 @@ Size of trie cache used for providing state sync data to peers in MBs. Should be
 
 In order to specify a config for the X-Chain, a JSON config file should be placed at `{chain-config-dir}/X/config.json`.
 
-For example if `chain-config-dir` has the default value which is `$HOME/.avalanchego/configs/chains`, then `config.json` can be placed at `$HOME/.avalanchego/configs/chains/X/config.json`.
+For example if `chain-config-dir` has the default value which is `$HOME/.metalgo/configs/chains`, then `config.json` can be placed at `$HOME/.metalgo/configs/chains/X/config.json`.
 
 This allows you to specify a config to be passed into the X-Chain. The default values for this config are:
 
@@ -536,7 +536,7 @@ The parameters are as follows:
 
 ### `index-transactions` (boolean):
 
-Enables AVM transaction indexing if set to `true`. Default value is `false`. When set to `true`, AVM transactions are indexed against the `address` and `assetID` involved. This data is available via `avm.getAddressTxs` [API](../../apis/avalanchego/apis/x-chain.md#avmgetaddresstxs).
+Enables AVM transaction indexing if set to `true`. Default value is `false`. When set to `true`, AVM transactions are indexed against the `address` and `assetID` involved. This data is available via `avm.getAddressTxs` [API](../../apis/metalgo/apis/x-chain.md#avmgetaddresstxs).
 
 :::note
 If `index-transactions` is set to true, it must always be set to true for the node's lifetime. If set to `false` after having been set to `true`, the node will refuse to start unless `index-allow-incomplete` is also set to `true` (see below).

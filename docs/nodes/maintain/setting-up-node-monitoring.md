@@ -2,15 +2,15 @@
 sidebar_position: 3
 ---
 
-# Monitor an Avalanche Node
+# Monitor a Metal Node
 
 ## Introduction
 
-This tutorial will show how to set up infrastructure to monitor an instance of [AvalancheGo](https://github.com/ava-labs/avalanchego). We will use:
+This tutorial will show how to set up infrastructure to monitor an instance of [MetalGo](https://github.com/ava-labs/avalanchego). We will use:
 
 - [Prometheus](https://prometheus.io/) to gather and store data
 - [node_exporter](https://github.com/prometheus/node_exporter) to get information about the machine,
-- AvalancheGo’s [metrics API](../../apis/avalanchego/apis/metrics.md) to get information about the node
+- AvalancheGo’s [metrics API](../../apis/metalgo/apis/metrics.md) to get information about the node
 - [Grafana](https://grafana.com/) to visualize data on a dashboard.
 - A set of pre-made [Avalanche dashboards](https://github.com/ava-labs/avalanche-monitoring/tree/main/grafana/dashboards)
 
@@ -115,7 +115,7 @@ Nov 12 11:38:33 ip-172-31-36-200 prometheus[548]: ts=2021-11-12T11:38:33.773Z ca
 Note the `active (running)` status (press `q` to exit). You can also check Prometheus web interface, available on `http://your-node-host-ip:9090/`
 
 :::warning
-You may need to do `sudo ufw allow 9090/tcp` if the firewall is on, and/or adjust the security settings to allow connections to port 9090 if the node is running on a cloud instance. For AWS, you can look it up [here](../build/setting-up-an-avalanche-node-with-amazon-web-services-aws.md#f8df). If on public internet, make sure to only allow your IP to connect!
+You may need to do `sudo ufw allow 9090/tcp` if the firewall is on, and/or adjust the security settings to allow connections to port 9090 if the node is running on a cloud instance. If on public internet, make sure to only allow your IP to connect!
 :::
 
 If everything is ok, let's move on.

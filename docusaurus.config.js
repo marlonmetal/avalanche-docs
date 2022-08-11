@@ -63,7 +63,7 @@ const config = {
         title: '',
         logo: {
           alt: 'Avalanche Logo',
-          src: 'img/Avalanche_Horizontal_Red.svg',
+          src: 'img/logo.svg',
         },
         items: [
           {
@@ -72,13 +72,13 @@ const config = {
             sidebarId: 'overview',
             label: 'Overview',
           },
-          {
-            type: 'docSidebar',
-            position: 'left',
-            sidebarId: 'quickStart',
-            label: 'Quick Start',
-          },     
-          {
+          // {
+          //   type: 'docSidebar',
+          //   position: 'left',
+          //   sidebarId: 'quickStart',
+          //   label: 'Quick Start',
+          // },     
+          /* {
             type: 'docSidebar',
             position: 'left',
             sidebarId: 'dapps',
@@ -90,7 +90,7 @@ const config = {
             position: 'left',
             sidebarId: 'subnets',
             label: 'Subnets',
-          }, 
+          },  */
           {
             type: 'docSidebar',
             position: 'left',
@@ -103,18 +103,18 @@ const config = {
             sidebarId: 'nodes',
             label: 'Nodes',
           }, 
-          {
+          /* {
             type: 'docSidebar',
             position: 'left',
             sidebarId: 'specs',
             label: 'Specs',
-          }, 
-          {
+          },  */
+         /*  {
             type: 'docSidebar',
             position: 'left',
             sidebarId: 'community',
             label: 'Community',
-          }, 
+          },  */
           {
             type: 'localeDropdown',
             position: 'right',
@@ -166,7 +166,7 @@ const config = {
             
           }
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Ava Labs, Inc.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Metallicus, Inc.`,
       },
       prism: {
         theme: lightCodeTheme,

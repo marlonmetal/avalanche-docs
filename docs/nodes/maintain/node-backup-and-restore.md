@@ -8,7 +8,7 @@ Once you have your node up and running, it's time to prepare for disaster recove
 
 When running, a complete node installation along with the database can grow to be multiple gigabytes in size. Having to back up and restore such a large volume of data can be expensive, complicated and time-consuming. Luckily, there is a better way.
 
-Instead of having to back up and restore everything, we need to back up only what is essential, that is, those files that cannot be reconstructed because they are unique to your node. For Avalanchego node, unique files are those that identify your node on the network, in other words, files that define your NodeID.
+Instead of having to back up and restore everything, we need to back up only what is essential, that is, those files that cannot be reconstructed because they are unique to your node. For MetalGo node, unique files are those that identify your node on the network, in other words, files that define your NodeID.
 
 Even if your node is a validator on the network and has multiple delegations on it, you don't need to worry about backing up anything else, because the validation and delegation transactions are also stored on the blockchain and will be restored during bootstrapping, along with the rest of the blockchain data.
 
@@ -18,7 +18,7 @@ The installation itself can be easily recreated by installing the node on a new 
 
 :::warning
 
-If more than one running nodes share the same NodeID, the communications from other nodes in the Avalanche network to this NodeID will be random to one of these nodes. If this NodeID is of a validator, it will dramatically impact the uptime calculation of the validator which will very likely disqualify the validator from receiving the staking rewards. Please make sure only one node with the same NodeID run at one time.
+If more than one running nodes share the same NodeID, the communications from other nodes in the Metal network to this NodeID will be random to one of these nodes. If this NodeID is of a validator, it will dramatically impact the uptime calculation of the validator which will very likely disqualify the validator from receiving the staking rewards. Please make sure only one node with the same NodeID run at one time.
 
 :::
 
@@ -27,10 +27,10 @@ NodeID is a unique identifier that differentiates your node from all the other p
 - `staker.crt`
 - `staker.key`
 
-In the default installation, they can be found in the working directory, specifically in `~/.avalanchego/staking/`. All we need to do to recreate the node on another machine is to run a new installation with those same two files.
+In the default installation, they can be found in the working directory, specifically in `~/.metalgo/staking/`. All we need to do to recreate the node on another machine is to run a new installation with those same two files.
 
 :::caution
-If you have users defined in the keystore of your node, then you need to back up and restore those as well. [Keystore API](../../apis/avalanchego/apis/keystore.md) has methods that can be used to export and import user keys. Note that Keystore API is used by developers only and not intended for use in production nodes. If you don't know what a keystore API is and have not used it, you don't need to worry about it.
+If you have users defined in the keystore of your node, then you need to back up and restore those as well. [Keystore API](../../apis/metalgo/apis/keystore.md) has methods that can be used to export and import user keys. Note that Keystore API is used by developers only and not intended for use in production nodes. If you don't know what a keystore API is and have not used it, you don't need to worry about it.
 :::
 
 ### Backup
@@ -47,27 +47,27 @@ Let's get the staker files off the machine running the node.
 
 If you're running the node locally, on your desktop computer, just navigate to where the files are and copy them somewhere safe.
 
-On a default Linux installation, the path to them will be `/home/USERNAME/.avalanchego/staking/`, where `USERNAME` needs to be replaced with the actual username running the node. Select and copy the files from there to a backup location. You don't need to stop the node to do that.
+On a default Linux installation, the path to them will be `/home/USERNAME/.metalgo/staking/`, where `USERNAME` needs to be replaced with the actual username running the node. Select and copy the files from there to a backup location. You don't need to stop the node to do that.
 
 #### From Remote Node Using `scp`
 
 `scp` is a 'secure copy' command line program, available built-in on Linux and MacOS computers. There is also a Windows version, `pscp`, as part of the [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) package. If using `pscp`, in the following commands replace each usage of `scp` with `pscp -scp`.
 
-To copy the files from the node, you will need to be able to remotely log into the machine. You can use account password, but the secure and recommended way is to use the SSH keys. The procedure for acquiring and setting up SSH keys is highly dependent on your cloud provider and machine configuration. You can refer to our [Amazon Web Services](../build/setting-up-an-avalanche-node-with-amazon-web-services-aws.md) and [Microsoft Azure](../build/set-up-an-avalanche-node-with-microsoft-azure.md) setup guides for those providers. Other providers will have similar procedures.
+To copy the files from the node, you will need to be able to remotely log into the machine. You can use account password, but the secure and recommended way is to use the SSH keys. The procedure for acquiring and setting up SSH keys is highly dependent on your cloud provider and machine configuration.
 
 When you have means of remote login into the machine, you can copy the files over with the following command:
 
 ```text
-scp -r ubuntu@PUBLICIP:/home/ubuntu/.avalanchego/staking ~/avalanche_backup
+scp -r ubuntu@PUBLICIP:/home/ubuntu/.metalgo/staking ~/metal_backup
 ```
 
 This assumes the username on the machine is `ubuntu`, replace with correct username in both places if it is different. Also, replace `PUBLICIP` with the actual public IP of the machine. If `scp` doesn't automatically use your downloaded SSH key, you can point to it manually:
 
 ```text
-scp -i /path/to/the/key.pem -r ubuntu@PUBLICIP:/home/ubuntu/.avalanchego/staking ~/avalanche_backup
+scp -i /path/to/the/key.pem -r ubuntu@PUBLICIP:/home/ubuntu/.metalgo/staking ~/metal_backup
 ```
 
-Once executed, this command will create `avalanche_backup` directory in you home directory and place staker files in it. You need to store them somewhere safe.
+Once executed, this command will create `metal_backup` directory in you home directory and place staker files in it. You need to store them somewhere safe.
 
 ### Restore
 
@@ -76,27 +76,27 @@ To restore your node from a backup, we need to do the reverse: restore `staker.k
 First, we need to do the usual [installation](../build/set-up-node-with-installer.md) of the node. This will create a new NodeID, which we need to replace. When the node is installed correctly, log into the machine where the node is running and stop it:
 
 ```text
-sudo systemctl stop avalanchego
+sudo systemctl stop metalgo
 ```
 
 We're ready to restore the node.
 
 #### To Local Node
 
-If you're running the node locally, just copy the `staker.key` and `staker.crt` files from the backup location into the working directory, which on the default Linux installation will be `/home/USERNAME/.avalanchego/staking/`. Replace `USERNAME` with the actual username used to run the node.
+If you're running the node locally, just copy the `staker.key` and `staker.crt` files from the backup location into the working directory, which on the default Linux installation will be `/home/USERNAME/.metalgo/staking/`. Replace `USERNAME` with the actual username used to run the node.
 
 #### To Remote Node Using `scp`
 
 Again, the process is just the reverse operation. Using `scp` we need to copy the `staker.key` and `staker.crt` files from the backup location into the remote working directory. Assuming the backed up files are located in the directory where the above backup procedure placed them:
 
 ```text
-scp ~/avalanche_backup/staker.* ubuntu@PUBLICIP:/home/ubuntu/.avalanchego/staking
+scp ~/metal_backup/staker.* ubuntu@PUBLICIP:/home/ubuntu/.metalgo/staking
 ```
 
 Or if you need to specify the path to the SSH key:
 
 ```text
-scp -i /path/to/the/key.pem ~/avalanche_backup/staker.* ubuntu@PUBLICIP:/home/ubuntu/.avalanchego/staking
+scp -i /path/to/the/key.pem ~/metal_backup/staker.* ubuntu@PUBLICIP:/home/ubuntu/.metalgo/staking
 ```
 
 And again, replace `ubuntu` with correct username if different, and `PUBLICIP` with the actual public IP of the machine running the node, as well as the path to the SSH key if used.
@@ -106,10 +106,10 @@ And again, replace `ubuntu` with correct username if different, and `PUBLICIP` w
 Once the files have been replaced, log into the machine and start the node using:
 
 ```text
-sudo systemctl start avalanchego
+sudo systemctl start metalgo
 ```
 
-You can now check that the node is restored with the correct NodeID by issuing the [getNodeID](../../apis/avalanchego/apis/info.md#infogetnodeid) API call in the same console you ran the previous command:
+You can now check that the node is restored with the correct NodeID by issuing the [getNodeID](../../apis/metalgo/apis/info.md#infogetnodeid) API call in the same console you ran the previous command:
 
 ```text
 curl -X POST --data '{
@@ -131,14 +131,14 @@ DB and moving it to another computer using `zip` and `scp`.
 
 ### Database Backup
 
-First, make sure to stop AvalancheGo, run:
+First, make sure to stop MetalGo, run:
 
 ```
-sudo systemctl stop avalanchego
+sudo systemctl stop metalgo
 ```
 
 :::warning
-You must stop the Avalanche node before you back up the database otherwise data
+You must stop the Metal node before you back up the database otherwise data
 could become corrupted.
 :::
 
@@ -146,7 +146,7 @@ Once the node is stopped, you can `zip` the database directory to reduce the
 size of the backup and speed up the transfer using `scp`:
 
 ```
-zip -r avalanche_db_backup.zip .avalanchego/db
+zip -r metal_db_backup.zip .metalgo/db
 ```
 
 _Note: It may take > 30 minutes to zip the node's DB._
@@ -154,30 +154,30 @@ _Note: It may take > 30 minutes to zip the node's DB._
 Next, you can transfer the backup to another machine:
 
 ```
-scp -r ubuntu@PUBLICIP:/home/ubuntu/avalanche_db_backup.zip ~/avalanche_db_backup.zip
+scp -r ubuntu@PUBLICIP:/home/ubuntu/metal_db_backup.zip ~/metal_db_backup.zip
 ```
 
 This assumes the username on the machine is `ubuntu`, replace with correct username in both places if it is different. Also, replace `PUBLICIP` with the actual public IP of the machine. If `scp` doesn't automatically use your downloaded SSH key, you can point to it manually:
 
 ```
-scp -i /path/to/the/key.pem -r ubuntu@PUBLICIP:/home/ubuntu/avalanche_db_backup.zip ~/avalanche_db_backup.zip
+scp -i /path/to/the/key.pem -r ubuntu@PUBLICIP:/home/ubuntu/metal_db_backup.zip ~/metal_db_backup.zip
 ```
 
-Once executed, this command will create `avalanche_db_backup.zip` directory in you home directory.
+Once executed, this command will create `metal_db_backup.zip` directory in you home directory.
 
 ### Database Restore
 
 _This tutorial assumes you have already completed "Database Backup" and have
-a backup at ~/avalanche_db_backup.zip._
+a backup at ~/metal_db_backup.zip._
 
 First, we need to do the usual [installation](../build/set-up-node-with-installer.md) of the node. When the node is installed correctly, log into the machine where the node is running and stop it:
 
 ```
-sudo systemctl stop avalanchego
+sudo systemctl stop metalgo
 ```
 
 :::warning
-You must stop the Avalanche node before you restore the database otherwise data
+You must stop the Metal node before you restore the database otherwise data
 could become corrupted.
 :::
 
@@ -185,26 +185,26 @@ We're ready to restore the database. First, let's move the DB on the existing
 node (you can remove this old DB later if the restore was successful):
 
 ```
-mv .avalanchego/db .avalanchego/db-old
+mv .metalgo/db .metalgo/db-old
 ```
 
 Next, we'll unzip the backup we moved from another node (this will place the
-unzipped files in `~/.avalanchego/db` when the command is run in the home directory):
+unzipped files in `~/.metalgo/db` when the command is run in the home directory):
 
 ```
-unzip avalanche_db_backup.zip
+unzip metal_db_backup.zip
 ```
 
 After the database has been restored on a new node, use this command to start the node:
 
 ```
-sudo systemctl start avalanchego
+sudo systemctl start metalgo
 ```
 
 Node should now be running from the database on the new instance. To check that everything is in order and that node is not bootstrapping from scratch (which would indicate a problem), use:
 
 ```
-sudo journalctl -u avalanchego -f
+sudo journalctl -u metalgo -f
 ```
 
 The node should be catching up to the network and fetching a small number of blocks before resuming normal operation (all the ones produced from the time when the node was stopped before the backup).
@@ -212,7 +212,7 @@ The node should be catching up to the network and fetching a small number of blo
 Once the backup has been restored and is working as expected, the zip can be deleted:
 
 ```
-rm avalanche_db_backup.zip
+rm metal_db_backup.zip
 ```
 
 ### Database Direct Copy
@@ -226,39 +226,39 @@ To do so, you will need `ssh` access from the destination machine (where you wan
 Same as shown previously, you need to stop the node (on both machines):
 
 ```
-sudo systemctl stop avalanchego
+sudo systemctl stop metalgo
 ```
 
 :::warning
-You must stop the Avalanche node before you back up the database otherwise data
+You must stop the Metal node before you back up the database otherwise data
 could become corrupted.
 :::
 
 Then, on the destination machine, change to a directory where you would like to the put the database files, enter the following command:
 
 ```
-ssh -i /path/to/the/key.pem ubuntu@PUBLICIP 'tar czf - .avalanchego/db' | tar xvzf - -C .
+ssh -i /path/to/the/key.pem ubuntu@PUBLICIP 'tar czf - .metalgo/db' | tar xvzf - -C .
 ```
 
 Make sure to replace the correct path to the key, and correct IP of the source machine. This will compress the database, but instead of writing it to a file it will pipe it over `ssh` directly to destination machine, where it will be decompressed and written to disk. The process can take a long time, make sure it completes before continuing.
 
-After copying is done, all you need to do now is move the database to the correct location on the destination machine. Assuming there is a default AvalancheGo node installation, we remove the old database and replace it with the new one:
+After copying is done, all you need to do now is move the database to the correct location on the destination machine. Assuming there is a default MetalGo node installation, we remove the old database and replace it with the new one:
 
 ```
-rm -rf ~/.avalanchego/db
-mv db ~/.avalanchego/db
+rm -rf ~/.metalgo/db
+mv db ~/.metalgo/db
 ```
 
 You can now start the node on the destination machine:
 
 ```
-sudo systemctl start avalanchego
+sudo systemctl start metalgo
 ```
 
 Node should now be running from the copied database. To check that everything is in order and that node is not bootstrapping from scratch (which would indicate a problem), use:
 
 ```
-sudo journalctl -u avalanchego -f
+sudo journalctl -u metalgo -f
 ```
 
 The node should be catching up to the network and fetching a small number of blocks before resuming normal operation (all the ones produced from the time when the node was stopped before the backup).

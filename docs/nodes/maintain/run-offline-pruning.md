@@ -23,10 +23,10 @@ After iterating over the database and deleting any old trie nodes that it can, o
 
 In order to enable offline pruning, you need to update the C-Chain config file to include the parameters `offline-pruning-enabled` and `offline-pruning-data-directory`.
 
-The default location of the C-Chain config file is `~/.avalanchego/configs/chains/C/config.json`. **Please note that by default, this file does not exist. You would need to create it manually.** You can update the directory for chain configs by passing in the directory of your choice via the CLI arg: `chain-config-dir`. See [this](./chain-config-flags.md) for more info. For example, if you start your node with:
+The default location of the C-Chain config file is `~/.metalgogo/configs/chains/C/config.json`. **Please note that by default, this file does not exist. You would need to create it manually.** You can update the directory for chain configs by passing in the directory of your choice via the CLI arg: `chain-config-dir`. See [this](./chain-config-flags.md) for more info. For example, if you start your node with:
 
 ```
-./build/avalanchego --chain-config-dir=/home/ubuntu/chain-configs
+./build/metalgo --chain-config-dir=/home/ubuntu/chain-configs
 ```
 
 the chain config directory will be updated to `/home/ubuntu/chain-configs` and the corresponding C-Chain config file will be: `/home/ubuntu/chain-configs/C/config.json`.
@@ -47,10 +47,10 @@ This will set `/home/ubuntu/offline-pruning` as the directory to be used by the 
 Now that the C-Chain config file has been updated, you can start your node with the command (no CLI args are necessary if using the default chain config directory):
 
 ```
-./build/avalanchego
+./build/metalgo
 ```
 
-Once AvalancheGo starts the C-Chain, you can expect to see update logs from the offline pruner:
+Once MetalGo starts the C-Chain, you can expect to see update logs from the offline pruner:
 
 ```
 INFO [02-09|00:20:15.625] Iterating state snapshot                 accounts=297,231 slots=6,669,708 elapsed=16.001s eta=1m29.03s

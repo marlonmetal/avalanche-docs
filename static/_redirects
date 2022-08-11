@@ -190,9 +190,9 @@
 /build/tutorials/nodes-and-staking/setting-up-an-avalanche-node-with-amazon-web-services-aws /nodes/build/setting-up-an-avalanche-node-with-amazon-web-services-aws 301
 /build/tutorials/nodes-and-staking/staking-avax-by-validating-or-delegating-with-the-avalanche-wallet/ /nodes/validate/staking 301
 /build/tutorials/nodes-and-staking/staking-avax-by-validating-or-delegating-with-the-avalanche-wallet /nodes/validate/staking 301
-/build/tutorials/nodes-and-staking/upgrade-your-nodes/ /nodes/maintain/upgrade-your-avalanchego-node 301
-/build/tutorials/nodes-and-staking/upgrade-your-nodes /nodes/maintain/upgrade-your-avalanchego-node 301
-/build/tutorials/nodes-and-staking/upgrade-your-avalanchego-node /nodes/maintain/upgrade-your-avalanchego-node 301
+/build/tutorials/nodes-and-staking/upgrade-your-nodes/ /nodes/maintain/upgrade-your-metalgo-node 301
+/build/tutorials/nodes-and-staking/upgrade-your-nodes /nodes/maintain/upgrade-your-metalgo-node 301
+/build/tutorials/nodes-and-staking/upgrade-your-metalgo-node /nodes/maintain/upgrade-your-metalgo-node 301
 /build/tutorials/nodes-and-staking/set-up-an-avalanche-node-with-microsoft-azure/ /nodes/build/set-up-an-avalanche-node-with-microsoft-azure 301
 /build/tutorials/nodes-and-staking/set-up-an-avalanche-node-with-microsoft-azure /nodes/build/set-up-an-avalanche-node-with-microsoft-azure 301
 /build/tutorials/nodes-and-staking/hetzner-volume-migration /nodes/maintain/hetzner-volume-migration 301
@@ -200,15 +200,15 @@
 /build/tutorials/nodes-and-staking/set-up-an-avalanche-node-with-google-cloud-platform /nodes/build/set-up-an-avalanche-node-with-google-cloud-platform 301
 /build/tutorials/nodes-and-staking/run-offline-pruning/ /nodes/maintain/run-offline-pruning 301
 /build/tutorials/nodes-and-staking/run-offline-pruning /nodes/maintain/run-offline-pruning 301
-/build/references/avalanchego-config-flags/ /nodes/maintain/avalanchego-config-flags 301
-/build/references/avalanchego-config-flags /nodes/maintain/avalanchego-config-flags
+/build/references/metalgo-config-flags/ /nodes/maintain/metalgo-config-flags 301
+/build/references/metalgo-config-flags /nodes/maintain/metalgo-config-flags
 /build/references/chain-config-flags/ /nodes/maintain/chain-config-flags 301
 /build/references/chain-config-flags /nodes/maintain/chain-config-flags 301
 /learn/platform-overview/staking/ /nodes/validate/staking 301
 /learn/platform-overview/staking /nodes/validate/staking 301
 #apis
-/build/release-notes/avalanchego/ /apis/avalanchego/avalanchego-release-notes 301
-/build/release-notes/avalanchego /apis/avalanchego/avalanchego-release-notes 301
+/build/release-notes/metalgo/ /apis/avalanchego/metalgo-release-notes 301
+/build/release-notes/metalgo /apis/avalanchego/metalgo-release-notes 301
 /build/tools/public-api/ /apis/avalanchego/public-api-server 301
 /build/tools/public-api /apis/avalanchego/public-api-server 301
 /build/tools/postman-avalanche-collection/ /apis/avalanchego/postman-avalanche-collection 301
@@ -314,7 +314,7 @@
 /learn/ / 301
 /learn/platf /overview/getting-started/avalanche-platform 301
 /build/get-started / 301
-/build/references/command-line-interface/ /nodes/maintain/avalanchego-config-flags/ 301
+/build/references/command-line-interface/ /nodes/maintain/metalgo-config-flags/ 301
 /build/tutorials/platform/create-a-virtual-machine-vm /subnets/create-a-virtual-machine-vm 301
 /build/tutorials/platform/create-evm-blockchain /subnets/create-evm-blockchain 301
 /build/tutorials/platform/deploying-cross-chain-evm-bridge/ /subnets/deploying-cross-chain-evm-bridge 301
