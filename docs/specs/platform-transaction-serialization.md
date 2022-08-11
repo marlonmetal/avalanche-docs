@@ -14,7 +14,7 @@ Transferable outputs wrap an output with an asset ID.
 
 A transferable output contains an `AssetID` and an `Output`.
 
-- **`AssetID`** is a 32-byte array that defines which asset this output references. The only valid `AssetID` is the AVAX `AssetID`.
+- **`AssetID`** is a 32-byte array that defines which asset this output references. The only valid `AssetID` is the METAL `AssetID`.
 - **`Output`** is an output, as defined below. For example, this can be a SECP256K1 transfer output.
 
 ### Gantt Transferable Output Specification
@@ -77,7 +77,7 @@ A transferable input contains a `TxID`, `UTXOIndex` `AssetID` and an `Input`.
 
 - **`TxID`** is a 32-byte array that defines which transaction this input is consuming an output from.
 - **`UTXOIndex`** is an int that defines which utxo this input is consuming the specified transaction.
-- **`AssetID`** is a 32-byte array that defines which asset this input references. The only valid `AssetID` is the AVAX `AssetID`.
+- **`AssetID`** is a 32-byte array that defines which asset this input references. The only valid `AssetID` is the METAL `AssetID`.
 - **`Input`** is a transferable input object.
 
 ### Gantt Transferable Input Specification
@@ -150,7 +150,7 @@ Outputs have two possible type: `SECP256K1TransferOutput`, `SECP256K1OutputOwner
 
 ## SECP256K1 Transfer Output
 
-A [secp256k1](cryptographic-primitives.md#secp-256-k1-addresses) transfer output allows for sending a quantity of an asset to a collection of addresses after a specified unix time. The only valid asset is AVAX.
+A [secp256k1](cryptographic-primitives.md#secp-256-k1-addresses) transfer output allows for sending a quantity of an asset to a collection of addresses after a specified unix time. The only valid asset is METAL.
 
 ### **What SECP256K1 Transfer Output Contains**
 
@@ -769,7 +769,7 @@ An unsigned add delegator tx contains a `BaseTx`, `Validator`, `Stake`, and `Rew
 - **`Validator`** Validator has a `NodeID`, `StartTime`, `EndTime`, and `Weight`
   - **`NodeID`** is 20 bytes which is the node ID of the delegatee.
   - **`StartTime`** is a long which is the Unix time when the delegator starts delegating.
-  - **`EndTime`** is a long which is the Unix time when the delegator stops delegating (and staked AVAX is returned).
+  - **`EndTime`** is a long which is the Unix time when the delegator stops delegating (and staked METAL is returned).
   - **`Weight`** is a long which is the amount the delegator stakes
 - **`Stake`** Stake has `LockedOuts`
   - **`LockedOuts`** An array of Transferable Outputs that are locked for the duration of the staking period. At the end of the staking period, these outputs are refunded to their respective addresses.

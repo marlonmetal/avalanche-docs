@@ -16,7 +16,7 @@ Metal is an incredibly lightweight protocol, so nodes can run on commodity hardw
 - OS: Ubuntu 18.04/20.04 or MacOS &gt;= Catalina
 - Network: sustained 5Mbps up/down bandwidth
 
-Please note that HW requirements shall scale with the amount of AVAX staked on the node. Nodes with big stakes (100k+ AVAX) will need more powerful machines than listed, and will use more bandwidth as well.
+Please note that HW requirements shall scale with the amount of METAL staked on the node. Nodes with big stakes (100k+ METAL) will need more powerful machines than listed, and will use more bandwidth as well.
 
 This install script assumes:
 
@@ -141,8 +141,6 @@ To check that the service is running use the following command (q to exit):
 sudo systemctl status metalgo
 To follow the log use (ctrl-c to stop):
 sudo journalctl -u metalgo -f
-
-Reach us over on https://chat.avax.network if you're having problems.
 ```
 
 The script is finished, and you should see the system prompt again.
@@ -260,7 +258,7 @@ Without any additional arguments, the script installs the node in a most common 
 - `admin` - [Admin API](../../apis/metalgo/apis/admin.md) will be enabled
 - `archival` - disables database pruning and preserves the complete transaction history
 - `db-dir` - use to provide the full path to the location where the database will be stored
-- `fuji` - node will connect to Fuji testnet instead of the mainnet
+- `tahoe` - node will connect to Tahoe testnet instead of the mainnet
 - `index` - [Index API](../../apis/metalgo/apis/index-api.md) will be enabled
 - `ip` - use `dynamic`, `static` arguments, of enter a desired IP directly to be used as the public IP node will advertise to the network
 - `rpc` - use `any` or `local` argument to select any or local network interface to be used to listen for RPC calls
@@ -284,10 +282,10 @@ If you want to use the script in an automated environment where you cannot enter
 
 ### Usage Examples
 
-To run a Fuji node with indexing enabled and autodetected static IP:
+To run a Tahoe node with indexing enabled and autodetected static IP:
 
 ```bash
-./metalgo-installer.sh --fuji --ip static --index
+./metalgo-installer.sh --tahoe --ip static --index
 ```
 
 To run an archival mainnet node with dynamic IP and database located at `/home/node/db`:

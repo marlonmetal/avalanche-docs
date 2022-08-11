@@ -264,7 +264,7 @@ Currently, there is only one additional dashboard: Subnets. If your node is runn
 ./monitoring-installer.sh --5
 ```
 
-This will add the Subnets dashboard. It allows you to monitor operational data for any Subnet that is synced on the node. There is a Subnet switcher that allows you to switch between different Subnets. As there are many Subnets and not every node will have all of them, by default, it comes populated only with Spaces and Wagmi Subnets that exist on Fuji testnet:
+This will add the Subnets dashboard. It allows you to monitor operational data for any Subnet that is synced on the node. There is a Subnet switcher that allows you to switch between different Subnets. As there are many Subnets and not every node will have all of them, by default, it comes populated only with Spaces and Wagmi Subnets that exist on Tahoe testnet:
 
 ![Subnets switcher](/img/monitoring-03-subnets.png)
 
@@ -281,7 +281,7 @@ Subnet name:<BlockchainID>
 and the separator between entries is a comma. Entries for Spaces and Wagmi look like:
 
 ```text
-Spaces (Fuji) : 2ebCneCbwthjQ1rYT41nhd7M76Hc6YmosMAQrTFhBq8qeqh6tt, WAGMI (Fuji) : 2AM3vsuLoJdGBGqX2ibE8RGEq4Lg7g4bot6BT1Z7B9dH5corUD
+Spaces (Tahoe) : 2ebCneCbwthjQ1rYT41nhd7M76Hc6YmosMAQrTFhBq8qeqh6tt, WAGMI (Tahoe) : 2AM3vsuLoJdGBGqX2ibE8RGEq4Lg7g4bot6BT1Z7B9dH5corUD
 ```
 
 After editing the values, press `Update` and then click `Save dashboard` button and confirm. Press the back arrow in the upper left corner to return to the dashboard. New values should now be selectable from the dropdown and data for the selected Subnet will be shown in the panels.
@@ -295,5 +295,3 @@ If you added the optional extra dashboards (step 5), they will be updated as wel
 ## Summary
 
 Using the script to install node monitoring is easy, and it gives you insight into how your node is behaving and what's going on under the hood. Also, pretty graphs!
-
-If you have feedback on this tutorial, problems with the script or following the steps, send us a message on [Discord](https://chat.avalabs.org).

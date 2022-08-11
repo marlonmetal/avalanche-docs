@@ -11,7 +11,7 @@ The Primary Network is inherent to the Metal platform and validates Metal's [bui
 The P-Chain manages metadata on Metal. This includes tracking which nodes are in which Subnets, which blockchains exist, and which Subnets are validating which blockchains. To add a validator, we’ll issue [transactions](http://support.avalabs.org/en/articles/4587384-what-is-a-transaction) to the P-Chain.
 
 :::warning
-Note that once you issue the transaction to add a node as a validator, there is no way to change the parameters. **You can’t remove your stake early or change the stake amount, node ID, or reward address.** Please make sure you’re using the correct values in the API calls below. If you’re not sure, feel free to join our [Discord](https://chat.avalabs.org/) to ask questions.
+Note that once you issue the transaction to add a node as a validator, there is no way to change the parameters. **You can’t remove your stake early or change the stake amount, node ID, or reward address.** Please make sure you’re using the correct values in the API calls below.
 :::
 
 ## Requirements
@@ -22,7 +22,7 @@ In order to ensure your node is well-connected, make sure that your node can rec
 
 ## Add a Validator with Avalanche Wallet
 
-First, we show you how to add your node as a validator by using [Avalanche Wallet](https://wallet.avax.network).
+First, we show you how to add your node as a validator by using [Avalanche Wallet](https://wallet.metalblockchain.org).
 
 ### Retrieve the Node ID
 
@@ -50,9 +50,9 @@ The response has your node’s ID:
 
 ### Add as a Validator
 
-Open [the wallet](https://wallet.avax.network/), and go the `Earn` tab. Choose `Add Validator` under the `Validate` section.
+Open [the wallet](https://wallet.metalblockchain.org/), and go the `Earn` tab. Choose `Add Validator` under the `Validate` section.
 
-Fill out the staking parameters. They are explained in more detail in [this doc](../validate/staking.md). When you’ve filled in all the staking parameters and double-checked them, click `Confirm`. Make sure the staking period is at least 2 weeks, the delegation fee rate is at least 2%, and you’re staking at least 2,000 AVAX on Mainnet (1 AVAX on Fuji Testnet).
+Fill out the staking parameters. They are explained in more detail in [this doc](../validate/staking.md). When you’ve filled in all the staking parameters and double-checked them, click `Confirm`. Make sure the staking period is at least 2 weeks, the delegation fee rate is at least 2%, and you’re staking at least 2,000 METAL on Mainnet (1 METAL on Tahoe Testnet).
 
 You should a success message, and your balance should be updated.
 
@@ -86,9 +86,9 @@ yarn add avalanche
 
 For this tutorial we will use [`ts-node`](https://www.npmjs.com/package/ts-node) to run the example scripts directly from an AvalancheJS directory.
 
-### Fuji Workflow
+### Tahoe Workflow
 
-In this section, we will use Fuji Testnet to show how to add a node to the validator set.
+In this section, we will use Tahoe Testnet to show how to add a node to the validator set.
 
 Open your AvalancheJS directory and select the [**`examples/platformvm`**](https://github.com/ava-labs/avalanchejs/tree/master/examples/platformvm) folder to view the source code for the examples scripts.
 
@@ -119,10 +119,10 @@ const protocol: string = "http"
 const networkID: number = 5
 ```
 
-However, to connect directly to the [Avalanche Fuji Testnet API server](../../apis/metalgo/public-api-server.md), the following changes are needed:
+However, to connect directly to the [Avalanche Tahoe Testnet API server](../../apis/metalgo/public-api-server.md), the following changes are needed:
 
 ```js
-const ip: string = "api.avax-test.network"
+const ip: string = "tahoe.metalblockchain.org"
 const port: number = 443
 const protocol: string = "https"
 const networkID: number = 5
@@ -130,9 +130,9 @@ const networkID: number = 5
 
 Depending on the networkID passed in when instantiating an `Avalanche` object in the code, the encoded addresses used will have a distinctive Human Readable Part(HRP) per each network.
 
-_Example Address: 5 - X-`fuji`19rknw8l0grnfunjrzwxlxync6zrlu33yxqzg0h_
+_Example Address: 5 - X-`tahoe`19rknw8l0grnfunjrzwxlxync6zrlu33yxqzg0h_
 
-For Fuji Testnet, 5 is the correct value to use.
+For Tahoe Testnet, 5 is the correct value to use.
 
 #### Settings for Validation
 
@@ -182,7 +182,7 @@ Avalanche allows for delegation of stake. This parameter is the percent fee this
 
 #### Stake Amount
 
-Set the the proper staking amount in calling `pchain.buildAddValidatorTx` by replacing `stakeAmount.minValidatorStake` with a number in the unit of gwei, for example, `BN(1e12)` which is 10,000 AVAX.
+Set the the proper staking amount in calling `pchain.buildAddValidatorTx` by replacing `stakeAmount.minValidatorStake` with a number in the unit of gwei, for example, `BN(1e12)` which is 10,000 METAL.
 
 #### Addresses
 
@@ -198,7 +198,7 @@ No change is needed in the addresses for the default action. For customization, 
 
 #### Execute the Code
 
-Now that we have made all of the necessary changes to the example script, it's time to add a validator to the Fuji Network.
+Now that we have made all of the necessary changes to the example script, it's time to add a validator to the Tahoe Network.
 
 Run the command:
 
@@ -248,7 +248,7 @@ This returns:
 
 The status should be `Committed`, meaning the transaction was successful.
 
-We can see if the node is now in the pending validator set for the Fuji network by using the example:[`getPendingValidators.ts`](https://github.com/ava-labs/avalanchejs/blob/master/examples/platformvm/getPendingValidators.ts). Just change the [network settings](#network-setting) to meet Fuji requirements and then run the script:
+We can see if the node is now in the pending validator set for the Tahoe network by using the example:[`getPendingValidators.ts`](https://github.com/ava-labs/avalanchejs/blob/master/examples/platformvm/getPendingValidators.ts). Just change the [network settings](#network-setting) to meet Tahoe requirements and then run the script:
 
 ```sh
 ts-node examples/platformvm/getPendingValidators.ts
@@ -270,7 +270,7 @@ The response should include the node we just added:
 }
 ```
 
-When the time reaches `1654656829` (Wed Jun 08 2022 02:53:49 GMT+0000), this node will start validating the Primary Network. When it reaches `1662602029` (Thu Sep 08 2022 01:53:49 GMT+0000), this node will stop validating the Primary Network. The staked AVAX and the rewards, if any, will be returned to `pAddressStrings`.
+When the time reaches `1654656829` (Wed Jun 08 2022 02:53:49 GMT+0000), this node will start validating the Primary Network. When it reaches `1662602029` (Thu Sep 08 2022 01:53:49 GMT+0000), this node will stop validating the Primary Network. The staked METAL and the rewards, if any, will be returned to `pAddressStrings`.
 
 #### Customizing Addresses
 
@@ -294,7 +294,7 @@ let privKey: string = `${PrivateKeyPrefix}${DefaultLocalGenesisPrivateKey}`
 pKeychain.importKey(privKey)
 ```
 
-and replace `privKey` with private keys that you control. To generate a new keypair, we can use the [`createKeypair.ts`](https://github.com/ava-labs/avalanchejs/blob/master/examples/platformvm/createKeypair.ts) example script along with [Fuji Network Settings](#network-setting).
+and replace `privKey` with private keys that you control. To generate a new keypair, we can use the [`createKeypair.ts`](https://github.com/ava-labs/avalanchejs/blob/master/examples/platformvm/createKeypair.ts) example script along with [Tahoe Network Settings](#network-setting).
 
 ```ts
 let privKey: string =
@@ -313,10 +313,10 @@ const pAddressStrings: string[] = pchain.keyChain().getAddressStrings()
 This example would create a keychain with 4 addresses:
 
 ```ts
-  "P-fuji1jx644d9y00y5q4hz8cq4wr75a2erne2y4e32xc", // pAddressStrings[0]
-  "P-fuji1wchdgdp94j8tszlpsp56qvgkvdn20svpmnm8qk", // pAddressStrings[1]
-  "P-fuji1f36kkpy6yzd7ayrywxvvprns7qlrcu3hwqdya8", // pAddressStrings[2]
-  "P-fuji1qw7yt3fp43kuwsufff4vhezs2yl00slr09vmh5", // pAddressStrings[3]
+  "P-tahoe1jx644d9y00y5q4hz8cq4wr75a2erne2y4e32xc", // pAddressStrings[0]
+  "P-tahoe1wchdgdp94j8tszlpsp56qvgkvdn20svpmnm8qk", // pAddressStrings[1]
+  "P-tahoe1f36kkpy6yzd7ayrywxvvprns7qlrcu3hwqdya8", // pAddressStrings[2]
+  "P-tahoe1qw7yt3fp43kuwsufff4vhezs2yl00slr09vmh5", // pAddressStrings[3]
 ```
 
 Now we can pass in each address according to it's slot in the `pAddressStrings` array:
@@ -342,7 +342,7 @@ const unsignedTx: UnsignedTx = await pchain.buildAddValidatorTx(
 
 ### Mainnet Workflow
 
-The Fuji workflow above can be adapted to Mainnet with the following modifications:
+The Tahoe workflow above can be adapted to Mainnet with the following modifications:
 
 - The correct private key.
 - Network setting should be to a Mainnet node, either [a local node on Mainnet](../../nodes/maintain/metalgo-config-flags.md#network-id) or [Avalanche Mainnet API server](../../apis/metalgo/public-api-server.md#using-the-public-api-nodes) where `api.metalblockchain.org` should be used for the `ip`.

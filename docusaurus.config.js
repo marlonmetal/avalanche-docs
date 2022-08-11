@@ -11,21 +11,18 @@ const config = {
     locales: ["en"],
   },
 
-  title: 'Avalanche Docs',
-  tagline: 'Documentation and Tutorials for Avalanche',
-  url: 'https://docs.avax.network',
+  title: 'Metal Docs',
+  tagline: 'Documentation and Tutorials for Metal',
+  url: 'https://docs.metalblockchain.org',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.png',
-  organizationName: 'ava-labs', // Usually your GitHub org/user name.
-  projectName: 'avalanche-docs', // Usually your repo name.
+  organizationName: 'MetalBlockchain', // Usually your GitHub org/user name.
+  projectName: 'metal-docs', // Usually your repo name.
   trailingSlash: false,
 
-  scripts: [
-    'scripts/intercom-app.js',
-    'scripts/intercom-scripts.js'
-  ],
+  scripts: [],
 
   presets: [
     [
@@ -36,14 +33,10 @@ const config = {
           sidebarPath: require.resolve('./sidebars.js'),
           routeBasePath: '/',
           // Please change this to your repo.
-          editUrl: 'https://github.com/ava-labs/avalanche-docs/edit/master/',
+          editUrl: 'https://github.com/MetalBlockchain/metal-docs/edit/master/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
-        },
-        googleAnalytics: {
-          trackingID: 'UA-126268251-10',
-          anonymizeIP: true,
         },
       }),
     ],
@@ -52,17 +45,17 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      image: 'img/Avalanche-OG-Image.png?force-reload-1',
+      image: 'img/Metal-OG-Image.png?force-reload-1',
       metadata: [
         {name: 'twitter:card', content: 'summary_large_image'},
-        {name: 'twitter:description', content: 'Avalanche is the fastest smart contracts platform in the blockchain industry, as measured by time-to-finality, and has the most validators securing its activity of any proof-of-stake protocol.'},
-        {name: 'twitter:title', content:'Developer Documentation and Tutorials for Avalanche'},
-        {name: 'keywords', content: 'Developer Documentation and Tutorials for Avalanche'}
+        {name: 'twitter:description', content: 'Metal is a new blockchain initiative built to power the new era of finance.'},
+        {name: 'twitter:title', content:'Developer Documentation and Tutorials for Metal'},
+        {name: 'keywords', content: 'Developer Documentation and Tutorials for Metal'}
       ],
       navbar: {
         title: '',
         logo: {
-          alt: 'Avalanche Logo',
+          alt: 'Metal Logo',
           src: 'img/logo.svg',
         },
         items: [
@@ -128,20 +121,12 @@ const config = {
             title: 'Community',
             items: [
               {
-                label: 'Discord',
-                href: 'https://chat.avax.network',
-              },
-              {
                 label: 'Twitter',
-                href: 'https://twitter.com/avalancheavax',
+                href: 'https://twitter.com/metalpaysme',
               },
               {
                 label: 'Telegram',
-                href: 'https://t.me/avalancheavax',
-              },
-              {
-                label: 'Medium',
-                href: 'https://medium.com/avalancheavax',
+                href: 'https://t.me/metalpaysme',
               }
             ],
           },
@@ -149,16 +134,8 @@ const config = {
             title: 'More',
             items: [
               {
-                label: 'YouTube',
-                href: 'https://youtube.com/avalancheavax',
-              },
-              {
-                label: 'Ecosystem',
-                href: 'https://ecosystem.avax.network',
-              },
-              {
                 label: 'GitHub',
-                href: 'https://github.com/ava-labs/avalanche-docs',
+                href: 'https://github.com/MetalBlockchain',
               }
             ],
           },
@@ -171,13 +148,7 @@ const config = {
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
-      },
-      algolia: {
-        appId: 'UAFD8IBIF7',
-        apiKey: '20006f8de4bf55970ebca9129c345a1d',
-        indexName: 'avax',
-        contextualSearch: true,
-      },
+      }
     }),
 };
 

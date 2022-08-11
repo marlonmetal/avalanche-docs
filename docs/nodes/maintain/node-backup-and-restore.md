@@ -266,5 +266,3 @@ The node should be catching up to the network and fetching a small number of blo
 ## Summary
 
 Essential part of securing your node is the backup that enables full and painless restoration of your node. Following this tutorial you can rest easy knowing that should you ever find yourself in a situation where you need to restore your node from scratch, you can easily and quickly do so.
-
-If you have any problems following this tutorial, comments you want to share with us or just want to chat, you can reach us on our [Discord](https://chat.avalabs.org/) server.

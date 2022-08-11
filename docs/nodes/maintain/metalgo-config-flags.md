@@ -228,7 +228,7 @@ Custom config is not yet supported for RocksDB.
 
 #### `--genesis` (string):
 
-Path to a JSON file containing the genesis data to use. Ignored when running standard networks (Mainnet, Fuji Testnet), or when `--genesis-content` is specified. If not given, uses default genesis data. For an example of a JSON representation of genesis data, see [here](https://github.com/MetalBlockchain/metalgo/blob/master/genesis/genesis_local.go#L16).
+Path to a JSON file containing the genesis data to use. Ignored when running standard networks (Mainnet, Tahoe Testnet), or when `--genesis-content` is specified. If not given, uses default genesis data. For an example of a JSON representation of genesis data, see [here](https://github.com/MetalBlockchain/metalgo/blob/master/genesis/genesis_local.go#L16).
 
 #### `--genesis-content` (string):
 
@@ -336,8 +336,8 @@ Enables the compression of rotated log files through gzip. Defaults to `false`.
 The identity of the network the node should connect to. Can be one of:
 
 - `--network-id=mainnet` -&gt; Connect to Mainnet (default).
-- `--network-id=fuji` -&gt; Connect to the Fuji test-network.
-- `--network-id=testnet` -&gt; Connect to the current test-network. (Right now, this is Fuji.)
+- `--network-id=tahoe` -&gt; Connect to the Tahoe test-network.
+- `--network-id=testnet` -&gt; Connect to the current test-network. (Right now, this is Tahoe.)
 - `--network-id=local` -&gt; Connect to a local test-network.
 - `--network-id=network-{id}` -&gt; Connect to the network with the given ID. `id` must be in the range `[0, 2^32)`.
 
@@ -369,7 +369,7 @@ The port through which the network peers will connect to this node externally. H
 
 #### `--staking-enabled` (boolean):
 
-Metal uses Proof of Stake (PoS) as Sybil resistance to make it prohibitively expensive to attack the network. If false, sybil resistance is disabled and all peers will be sampled during consensus. Defaults to `true`. Note that this can not be specified on public networks (`Fuji` and `Mainnet`).
+Metal uses Proof of Stake (PoS) as Sybil resistance to make it prohibitively expensive to attack the network. If false, sybil resistance is disabled and all peers will be sampled during consensus. Defaults to `true`. Note that this can not be specified on public networks (`Tahoe` and `Mainnet`).
 
 Setting this flag to `false` **does not** mean "this node is not a validator."
 It means that this node will sample all nodes, not just validators.
@@ -514,7 +514,7 @@ build-dir
 ### Consensus Parameters
 
 :::note
-Some of these parameters can only be set on a local or private network, not on Fuji Testnet or Mainnet
+Some of these parameters can only be set on a local or private network, not on Tahoe Testnet or Mainnet
 
 :::
 
@@ -528,21 +528,21 @@ Timeout before killing an unresponsive chain. Defaults to `5s`.
 
 #### `--create-asset-tx-fee` (int):
 
-Transaction fee, in nAVAX, for transactions that create new assets. Defaults to `10000000` nAVAX (.01 AVAX) per transaction. This can only be changed on a local network.
+Transaction fee, in nMETAL, for transactions that create new assets. Defaults to `10000000` nMETAL (.01 METAL) per transaction. This can only be changed on a local network.
 
 #### `--create-subnet-tx-fee` (int):
 
-Transaction fee, in nAVAX, for transactions that create new Subnets. Defaults to `1000000000` nAVAX (1 AVAX) per transaction. This can only be changed on a local network.
+Transaction fee, in nMETAL, for transactions that create new Subnets. Defaults to `1000000000` nMETAL (1 METAL) per transaction. This can only be changed on a local network.
 
 #### `--create-blockchain-tx-fee` (int):
 
-Transaction fee, in nAVAX, for transactions that create new blockchains. Defaults to `1000000000` nAVAX (1 AVAX) per transaction. This can only be changed on a local network.
+Transaction fee, in nMETAL, for transactions that create new blockchains. Defaults to `1000000000` nMETAL (1 METAL) per transaction. This can only be changed on a local network.
 
 #### `--min-delegator-stake` (int):
 
-The minimum stake, in nAVAX, that can be delegated to a validator of the Primary Network.
+The minimum stake, in nMETAL, that can be delegated to a validator of the Primary Network.
 
-Defaults to `25000000000` (25 AVAX) on Mainnet. Defaults to `5000000` (.005 AVAX) on Test Net. This can only be changed on a local network.
+Defaults to `25000000000` (25 METAL) on Mainnet. Defaults to `5000000` (.005 METAL) on Test Net. This can only be changed on a local network.
 
 #### `--min-delegation-fee` (int):
 
@@ -554,9 +554,9 @@ Minimum staking duration. The Default on Mainnet is `336h` (two weeks). This can
 
 #### `--min-validator-stake` (int):
 
-The minimum stake, in nAVAX, required to validate the Primary Network. This can only be changed on a local network.
+The minimum stake, in nMETAL, required to validate the Primary Network. This can only be changed on a local network.
 
-Defaults to `2000000000000` (2,000 AVAX) on Mainnet. Defaults to `5000000` (.005 AVAX) on Test Net.
+Defaults to `2000000000000` (2,000 METAL) on Mainnet. Defaults to `5000000` (.005 METAL) on Test Net.
 
 #### `--max-stake-duration` (duration):
 
@@ -564,7 +564,7 @@ The maximum staking duration, in hours. Defaults to `8760h` (365 days) on Mainne
 
 #### `--max-validator-stake` (int):
 
-The maximum stake, in nAVAX, that can be placed on a validator on the primary network. Defaults to `3000000000000000` (3,000,000 AVAX) on Mainnet. This includes stake provided by both the validator and by delegators to the validator. This can only be changed on a local network.
+The maximum stake, in nMETAL, that can be placed on a validator on the primary network. Defaults to `3000000000000000` (3,000,000 METAL) on Mainnet. This includes stake provided by both the validator and by delegators to the validator. This can only be changed on a local network.
 
 #### `--stake-minting-period` (duration):
 
@@ -580,11 +580,11 @@ The minimum percentage of the consumption rate for the remaining token supply in
 
 #### `--stake-supply-cap` (uint):
 
-The maximum stake supply, in nAVAX, that can be placed on a validator. Defaults to `720,000,000,000,000,000` nAVAX. This can only be changed on a local network.
+The maximum stake supply, in nMETAL, that can be placed on a validator. Defaults to `720,000,000,000,000,000` nMETAL. This can only be changed on a local network.
 
 #### `--tx-fee` (int):
 
-The required amount of nAVAX to be burned for a transaction to be valid on the X-Chain, and for import/export transactions on the P-Chain. This parameter requires network agreement in its current form. Changing this value from the default should only be done on private networks or local network. Defaults to `1,000,000` nAVAX per transaction.
+The required amount of nMETAL to be burned for a transaction to be valid on the X-Chain, and for import/export transactions on the P-Chain. This parameter requires network agreement in its current form. Changing this value from the default should only be done on private networks or local network. Defaults to `1,000,000` nMETAL per transaction.
 
 #### `--uptime-requirement` (float):
 

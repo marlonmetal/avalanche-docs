@@ -128,7 +128,7 @@ If you are using the pre-built binaries on Linux:
 ./avalanchego-<VERSION>-linux/metalgo
 ```
 
-By default (without specifying any parameters), this node will connect to the Mainnet which may take much longer time to finish bootstrapping. See [this](#connect-to-fuji-testnet) for connecting to Fuji Testnet.
+By default (without specifying any parameters), this node will connect to the Mainnet which may take much longer time to finish bootstrapping. See [this](#connect-to-tahoe-testnet) for connecting to Tahoe Testnet.
 
 When the node starts, it has to bootstrap (catch up with the rest of the network). You will see logs about bootstrapping. When a given chain is done bootstrapping, it will print a log like this:
 

@@ -159,7 +159,7 @@ DEBUG[02-09|00:59:34.425] Allowed origin(s) for WS RPC interface [*]
 INFO [02-09|00:59:34] api/server/server.go#203: adding route /ext/bc/2q9e4r6Mu3U68nU1fYjgbR6JvwrRx36CohpAX5UQxse55x1Q5/avax
 INFO [02-09|00:59:34] api/server/server.go#203: adding route /ext/bc/2q9e4r6Mu3U68nU1fYjgbR6JvwrRx36CohpAX5UQxse55x1Q5/rpc
 INFO [02-09|00:59:34] api/server/server.go#203: adding route /ext/bc/2q9e4r6Mu3U68nU1fYjgbR6JvwrRx36CohpAX5UQxse55x1Q5/ws
-INFO [02-09|00:59:34] <X Chain> vms/avm/vm.go#437: Fee payments are using Asset with Alias: AVAX, AssetID: FvwEAhmxKfeiG8SnEvq42hc6whRyY3EFYAvebMqDNDGCgxN5Z
+INFO [02-09|00:59:34] <X Chain> vms/avm/vm.go#437: Fee payments are using Asset with Alias: METAL, AssetID: FvwEAhmxKfeiG8SnEvq42hc6whRyY3EFYAvebMqDNDGCgxN5Z
 INFO [02-09|00:59:34] <X Chain> vms/avm/vm.go#229: address transaction indexing is disabled
 INFO [02-09|00:59:34] <X Chain> snow/engine/avalanche/transitive.go#71: initializing consensus engine
 INFO [02-09|00:59:34] <X Chain> snow/engine/avalanche/bootstrap/bootstrapper.go#258: Starting bootstrap...

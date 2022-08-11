@@ -34,7 +34,7 @@ The delegation period must be a subset of the period that the delegatee validate
 
 :::info
 
-Once you issue the transaction to add a node as a delegator, there is no way to change the parameters. **You can’t remove a stake early or change the stake amount, node ID, or reward address.** Please make sure you’re using the correct values. If you’re not sure, please reach out to us on [Discord.](https://chat.avalabs.org/)
+Once you issue the transaction to add a node as a delegator, there is no way to change the parameters. **You can’t remove a stake early or change the stake amount, node ID, or reward address.** Please make sure you’re using the correct values.
 
 :::
 
@@ -120,7 +120,7 @@ The validation period must be between 2 weeks and 1 year for the Mainnet, and 24
 There is a maximum total weight imposed on validators. This means that no validator will ever have more METAL staked and delegated to it than this value. This value will initially be set to `min(5 * amount staked, 3M METAL)`. The total value on a validator is 3 million METAL.
 
 :::info
-Note that once you issue the transaction to add a node as a validator, there is no way to change the parameters. **You can’t remove stake early or change the stake amount, node ID, or reward address.** Please make sure you’re using the correct values. If you’re not sure, please reach out to us on [Discord.](https://chat.avalabs.org/)
+Note that once you issue the transaction to add a node as a validator, there is no way to change the parameters. **You can’t remove stake early or change the stake amount, node ID, or reward address.** Please make sure you’re using the correct values.
 :::
 
 #### **Signature**

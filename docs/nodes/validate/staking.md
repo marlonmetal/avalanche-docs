@@ -9,31 +9,31 @@ Staking is the process of locking up tokens to support a network while receiving
 
 ## How Does Proof-of-stake Work?
 
-To resist [sybil attacks](https://support.avalabs.org/en/articles/4064853-what-is-a-sybil-attack), a decentralized network must require that network influence is paid with a scarce resource. This makes it infeasibly expensive for an attacker to gain enough influence over the network to compromise its security. In proof-of-work systems, the scarce resource is computing power. On Avalanche, the scarce resource is the native token, [AVAX](../../overview/getting-started/intro.md#avax). For a node to [validate](http://support.avalabs.org/en/articles/4064704-what-is-a-blockchain-validator) a blockchain on Avalanche, it must stake AVAX.
+To resist [sybil attacks](https://support.avalabs.org/en/articles/4064853-what-is-a-sybil-attack), a decentralized network must require that network influence is paid with a scarce resource. This makes it infeasibly expensive for an attacker to gain enough influence over the network to compromise its security. In proof-of-work systems, the scarce resource is computing power. On Avalanche, the scarce resource is the native token, [METAL](../../overview/getting-started/intro.md#metal). For a node to [validate](http://support.avalabs.org/en/articles/4064704-what-is-a-blockchain-validator) a blockchain on Avalanche, it must stake METAL.
 
 ## Staking Parameters on Avalanche
 
-When a validator is done validating the [Primary Network](http://support.avalabs.org/en/articles/4135650-what-is-the-primary-network), it receives back the AVAX tokens it staked. It may receive a reward for helping to secure the network. A validator only receives a [validation reward](http://support.avalabs.org/en/articles/4587396-what-are-validator-staking-rewards) if it is sufficiently responsive and correct during the time it validates. Read the [Avalanche token whitepaper](https://www.avalabs.org/whitepapers) to learn more about AVAX and the mechanics of staking.
+When a validator is done validating the [Primary Network](http://support.avalabs.org/en/articles/4135650-what-is-the-primary-network), it receives back the METAL tokens it staked. It may receive a reward for helping to secure the network. A validator only receives a [validation reward](http://support.avalabs.org/en/articles/4587396-what-are-validator-staking-rewards) if it is sufficiently responsive and correct during the time it validates. Read the [Avalanche token whitepaper](https://www.avalabs.org/whitepapers) to learn more about METAL and the mechanics of staking.
 
 :::caution
 Staking rewards are sent to your wallet address at the end of the staking term **as long as all of these parameters are met**.
 :::
 
-- The minimum amount that a validator must stake is 2,000 AVAX
-- The minimum amount that a delegator must delegate is 25 AVAX
+- The minimum amount that a validator must stake is 2,000 METAL
+- The minimum amount that a delegator must delegate is 25 METAL
 - The minimum amount of time one can stake funds for validation is 2 weeks
 - The maximum amount of time one can stake funds for validation is 1 year
 - The minimum amount of time one can stake funds for delegation is 2 weeks
 - The maximum amount of time one can stake funds for delegation is 1 year
 - The minimum delegation fee rate is 2%
-- The maximum weight of a validator (their own stake + stake delegated to them) is the minimum of 3 million AVAX and 5 times the amount the validator staked. For example, if you staked 2,000 AVAX to become a validator, only 8000 AVAX can be delegated to your node total (not per delegator)
+- The maximum weight of a validator (their own stake + stake delegated to them) is the minimum of 3 million METAL and 5 times the amount the validator staked. For example, if you staked 2,000 METAL to become a validator, only 8000 METAL can be delegated to your node total (not per delegator)
 
 A validator will receive a staking reward if they are online and response for more than 80% of their validation period, as measured by a majority of validators, weighted by stake. **You should aim for your validator be online and responsive 100% of the time.**
 
 You can call API method `info.uptime` on your node to learn its weighted uptime and what percentage of the network currently thinks your node has an uptime high enough to reveive a staking reward. See [here.](../../apis/metalgo/apis/info.md#infouptime)
 You can get another opinion on your node's uptime from Avalanche's [Validator Health dashboard](https://stats.avax.network/dashboard/validator-health-check/).
 If your reported uptime is not close to 100%, there may be something wrong with your node setup, which may jeopardize your staking reward.
-If this is the case, please see [here](#why-is-my-uptime-low) or contact us on [Discord](https://chat.avax.network) so we can help you find the issue.
+If this is the case, please see [here](#why-is-my-uptime-low).
 Note that only checking the uptime of your validator as measured by non-staking nodes, validators with small stake, or validators that have not been online for the full duration of your validation period can provide an inaccurate view of your node's true uptime.
 
 ## Validators
@@ -44,16 +44,16 @@ When you add a node to the validator set, you specify:
 
 - Your node’s ID
 - When you want to start and stop validating
-- How many AVAX you are staking
+- How many METAL you are staking
 - The address to send any rewards to
 - Your delegation fee rate (see below)
 
 :::info
-The minimum amount that a validator must stake is 2,000 AVAX.
+The minimum amount that a validator must stake is 2,000 METAL.
 :::
 
 :::warning
-Note that once you issue the transaction to add a node as a validator, there is no way to change the parameters. **You can’t remove your stake early or change the stake amount, node ID, or reward address.** Please make sure you’re using the correct values in the API calls below. If you’re not sure, ask for help on [Discord](https://chat.avax.network). If you want to add more tokens to your own validator, you can delegate the tokens to this node - but you cannot increase the base validation amount (so delegating to yourself goes against your delegation cap).
+Note that once you issue the transaction to add a node as a validator, there is no way to change the parameters. **You can’t remove your stake early or change the stake amount, node ID, or reward address.** Please make sure you’re using the correct values in the API calls below. If you want to add more tokens to your own validator, you can delegate the tokens to this node - but you cannot increase the base validation amount (so delegating to yourself goes against your delegation cap).
 :::
 
 ### Running a Validator
@@ -80,15 +80,15 @@ If your node's uptime is low, make sure you're setting config option `--public-i
 
 The only secret that you need on your validating node is its Staking Key, the TLS key that determines your node’s ID. The first time you start a node, the Staking Key is created and put in `$HOME/.avalanchego/staking/staker.key`. You should back up this file (and `staker.crt`) somewhere secure. Losing your Staking Key could jeopardize your validation reward, as your node will have a new ID.
 
-You do not need to have AVAX funds on your validating node. In fact, it's best practice to **not** have a lot of funds on your node. Almost all of your funds should be in "cold" addresses whose private key is not on any computer.
+You do not need to have METAL funds on your validating node. In fact, it's best practice to **not** have a lot of funds on your node. Almost all of your funds should be in "cold" addresses whose private key is not on any computer.
 
 #### Monitoring
 
 Follow this [tutorial](../maintain/setting-up-node-monitoring.md) to learn how to monitor your node's uptime, general health, etc.
 
-#### Validating In Fuji
+#### Validating In Tahoe
 
-Validating in Fuji requires just `1 AVAX`. So you can easily set up your validator node and learn more about validating.
+Validating in Tahoe requires just `1 METAL`. So you can easily set up your validator node and learn more about validating.
 
 ## Delegators
 
@@ -98,15 +98,15 @@ When you delegate stake to a validator, you specify:
 
 - The ID of the node you’re delegating to
 - When you want to start/stop delegating stake (must be while the validator is validating)
-- How many AVAX you are staking
+- How many METAL you are staking
 - The address to send any rewards to
 
 :::info
-The minimum amount that a delegator must delegate is 25 AVAX.
+The minimum amount that a delegator must delegate is 25 METAL.
 :::
 
 :::warning
-Note that once you issue the transaction to add your stake to a delegator, there is no way to change the parameters. **You can’t remove your stake early or change the stake amount, node ID, or reward address.** If you’re not sure, ask for help on [Discord](https://chat.avax.network).
+Note that once you issue the transaction to add your stake to a delegator, there is no way to change the parameters. **You can’t remove your stake early or change the stake amount, node ID, or reward address.**
 :::
 
 ### Delegator Rewards

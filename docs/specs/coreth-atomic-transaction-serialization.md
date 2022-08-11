@@ -19,7 +19,7 @@ Input type that specifies an EVM account to deduct the funds from as part of an 
 An EVM Input contains an `address`, `amount`, `assetID`, and `nonce`.
 
 - **`Address`** is the EVM address from which to transfer funds.
-- **`Amount`** is the amount of the asset to be transferred (specified in nAVAX for AVAX and the smallest denomination for all other assets).
+- **`Amount`** is the amount of the asset to be transferred (specified in nMETAL for METAL and the smallest denomination for all other assets).
 - **`AssetID`** is the ID of the asset to transfer.
 - **`Nonce`** is the nonce of the EVM account exporting funds.
 
@@ -239,7 +239,7 @@ Output type specifying a state change to be applied to an EVM account as part of
 An EVM Output contains an `address`, `amount`, and `assetID`.
 
 - **`Address`** is the EVM address that will receive the funds.
-- **`Amount`** is the amount of the asset to be transferred (specified in nAVAX for AVAX and the smallest denomination for all other assets).
+- **`Amount`** is the amount of the asset to be transferred (specified in nMETAL for METAL and the smallest denomination for all other assets).
 - **`AssetID`** is the ID of the asset to transfer.
 
 ### Gantt EVM Output Specification
@@ -458,7 +458,7 @@ ExportTx is a transaction to export funds from Coreth to a different chain.
 An ExportTx contains an `typeID`, `networkID`, `blockchainID`, `destinationChain`, `inputs`, and `exportedOutputs`.
 
 - **`typeID`** is an int that the type for an ExportTx. The typeID for an exportTx is 1.
-- **`networkID`** is an int that defines which Avalanche network this transaction is meant to be issued to. This could refer to mainnet, fuji, etc. and is different than the EVM's network ID.
+- **`networkID`** is an int that defines which Avalanche network this transaction is meant to be issued to. This could refer to mainnet, tahoe, etc. and is different than the EVM's network ID.
 - **`blockchainID`** is a 32-byte array that defines which blockchain this transaction was issued to.
 - **`destinationChain`** is a 32-byte array that defines which blockchain this transaction exports funds to.
 - **`inputs`** is an array of EVM Inputs to fund the ExportTx.
@@ -563,7 +563,7 @@ ImportTx is a transaction to import funds to Coreth from another chain.
 An ImportTx contains an `typeID`, `networkID`, `blockchainID`, `destinationChain`, `importedInputs`, and `Outs`.
 
 - **`typeID`** is an int that the type for an ImportTx. The typeID for an `ImportTx` is 0.
-- **`networkID`** is an int that defines which Avalanche network this transaction is meant to be issued to. This could refer to mainnet, fuji, etc. and is different than the EVM's network ID.
+- **`networkID`** is an int that defines which Avalanche network this transaction is meant to be issued to. This could refer to mainnet, tahoe, etc. and is different than the EVM's network ID.
 - **`blockchainID`** is a 32-byte array that defines which blockchain this transaction was issued to.
 - **`sourceChain`** is a 32-byte array that defines which blockchain from which to import funds.
 - **`importedInputs`** is an array of TransferableInputs to fund the ImportTx.
