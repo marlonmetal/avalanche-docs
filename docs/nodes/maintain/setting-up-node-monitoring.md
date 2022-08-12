@@ -6,17 +6,17 @@ sidebar_position: 3
 
 ## Introduction
 
-This tutorial will show how to set up infrastructure to monitor an instance of [MetalGo](https://github.com/ava-labs/avalanchego). We will use:
+This tutorial will show how to set up infrastructure to monitor an instance of [MetalGo](https://github.com/MetalBlockchain/metalgo). We will use:
 
 - [Prometheus](https://prometheus.io/) to gather and store data
 - [node_exporter](https://github.com/prometheus/node_exporter) to get information about the machine,
-- AvalancheGo’s [metrics API](../../apis/metalgo/apis/metrics.md) to get information about the node
+- MetalGo's [metrics API](../../apis/metalgo/apis/metrics.md) to get information about the node
 - [Grafana](https://grafana.com/) to visualize data on a dashboard.
-- A set of pre-made [Avalanche dashboards](https://github.com/ava-labs/avalanche-monitoring/tree/main/grafana/dashboards)
+- A set of pre-made [Metal dashboards](https://github.com/MetalBlockchain/metal-monitoring/tree/main/grafana/dashboards)
 
 Prerequisites:
 
-- A running AvalancheGo node
+- A running MetalGo node
 - Shell access to the machine running the node
 - Administrator privileges on the machine
 
@@ -33,7 +33,7 @@ The system as described here **should not** be opened to the public internet. Ne
 In order to make node monitoring easier to install, we have made a script that does most of the work for you. To download and run the script, log into the machine the node runs on with a user that has administrator privileges and enter the following command:
 
 ```bash
-wget -nd -m https://raw.githubusercontent.com/ava-labs/avalanche-monitoring/main/grafana/monitoring-installer.sh ;\
+wget -nd -m https://raw.githubusercontent.com/MetalBlockchain/metal-monitoring/main/grafana/monitoring-installer.sh ;\
 chmod 755 monitoring-installer.sh;
 ```
 
@@ -55,10 +55,10 @@ Options:
 --1      Step 1: Installs Prometheus
 --2      Step 2: Installs Grafana
 --3      Step 3: Installs node_exporter
---4      Step 4: Installs AvalancheGo Grafana dashboards
+--4      Step 4: Installs MetalGo Grafana dashboards
 --5      Step 5: (Optional) Installs additional dashboards
 
-Run without any options, script will download and install latest version of AvalancheGo dashboards.
+Run without any options, script will download and install latest version of MetalGo dashboards.
 ```
 
 Let's get to it.
@@ -74,7 +74,7 @@ Run the script to execute the first step:
 It should produce output something like this:
 
 ```text
-AvalancheGo monitoring installer
+MetalGo monitoring installer
 --------------------------------
 STEP 1: Installing Prometheus
 
@@ -131,7 +131,7 @@ Run the script to execute the second step:
 It should produce output something like this:
 
 ```text
-AvalancheGo monitoring installer
+MetalGo monitoring installer
 --------------------------------
 STEP 2: Installing Grafana
 
@@ -162,7 +162,7 @@ Prometheus and Grafana are now installed, we're ready for the next step.
 
 ## Step 3: Set up node_exporter <a id="exporter"></a>
 
-In addition to metrics from AvalancheGo, let’s set up monitoring of the machine itself, so we can check CPU, memory, network and disk usage and be aware of any anomalies. For that, we will use node_exporter, a Prometheus plugin.
+In addition to metrics from MetalGo, let’s set up monitoring of the machine itself, so we can check CPU, memory, network and disk usage and be aware of any anomalies. For that, we will use node_exporter, a Prometheus plugin.
 
 Run the script to execute the third step:
 
@@ -173,7 +173,7 @@ Run the script to execute the third step:
 The output should look something like this:
 
 ```text
-AvalancheGo monitoring installer
+MetalGo monitoring installer
 --------------------------------
 STEP 3: Installing node_exporter
 
@@ -195,16 +195,16 @@ sudo systemctl status node_exporter
 If the service is running, Prometheus, Grafana and node_exporter should all work together now. To check, in your browser visit Prometheus web interface on `http://your-node-host-ip:9090/targets`. You should see three targets enabled:
 
 - Prometheus
-- avalanchego
-- avalanchego-machine
+- metalgo
+- metalgo-machine
 
 Make sure that all of them have `State` as `UP`.
 
 :::info
-If you run your AvalancheGo node with TLS enabled on your API port, you will need to manually edit the `/etc/prometheus/prometheus.yml` file and change the `avalanchego` job to look like this:
+If you run your MetalGo node with TLS enabled on your API port, you will need to manually edit the `/etc/prometheus/prometheus.yml` file and change the `metalgo` job to look like this:
 
 ```yaml
-- job_name: "avalanchego"
+- job_name: "metalgo"
   metrics_path: "/ext/metrics"
   scheme: "https"
   tls_config:
@@ -229,12 +229,12 @@ Run the script to install the dashboards:
 It will produce output something like this:
 
 ```text
-AvalancheGo monitoring installer
+MetalGo monitoring installer
 --------------------------------
 
 Downloading...
 Last-modified header missing -- time-stamps turned off.
-2021-11-05 14:57:47 URL:https://raw.githubusercontent.com/ava-labs/avalanche-monitoring/master/grafana/dashboards/c_chain.json [50282/50282] -> "c_chain.json" [1]
+2021-11-05 14:57:47 URL:https://raw.githubusercontent.com/MetalBlockchain/metal-monitoring/master/grafana/dashboards/c_chain.json [50282/50282] -> "c_chain.json" [1]
 FINISHED --2021-11-05 14:57:47--
 Total wall clock time: 0.2s
 Downloaded: 1 files, 49K in 0s (132 MB/s)
@@ -242,11 +242,11 @@ Last-modified header missing -- time-stamps turned off.
 ...
 ```
 
-This will download the latest versions of the dashboards from GitHub and provision Grafana to load them, as well as defining Prometheus as a datasource. It may take up to 30 seconds for the dashboards to show up. In your browser, go to: `http://your-node-host-ip:3000/dashboards`. You should see 7 Avalanche dashboards:
+This will download the latest versions of the dashboards from GitHub and provision Grafana to load them, as well as defining Prometheus as a datasource. It may take up to 30 seconds for the dashboards to show up. In your browser, go to: `http://your-node-host-ip:3000/dashboards`. You should see 7 Metal dashboards:
 
 ![Imported dashboards](/img/monitoring-01-dashboards.png)
 
-Select 'Avalanche Main Dashboard' by clicking its title. It should load, and look similar to this:
+Select 'Metal Main Dashboard' by clicking its title. It should load, and look similar to this:
 
 ![Main Dashboard](/img/monitoring-02-main-dashboard.png)
 
