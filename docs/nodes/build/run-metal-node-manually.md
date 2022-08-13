@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-description: The quickest way to learn about Avalanche is to run a node and interact with the network and geared toward people interested in how the Avalanche Platform works.
+description: The quickest way to learn about Metal is to run a node and interact with the network and geared toward people interested in how the Metal Platform works.
 ---
 
 # Run a Metal Node Manually
@@ -71,8 +71,8 @@ Download the MetalGo repository into your `$GOPATH`:
 cd $GOPATH
 mkdir -p src/github.com/MetalBlockchain
 cd src/github.com/MetalBlockchain
-git clone git@github.com:MetalBlockchain/avalanchego.git
-cd avalanchego
+git clone git@github.com:MetalBlockchain/metalgo.git
+cd metalgo
 ```
 
 Note: This checkouts to the master branch. For the latest stable version, checkout the latest tag.
@@ -83,7 +83,7 @@ Build MetalGo:
 ./scripts/build.sh
 ```
 
-The binary, named `metalgo`, is in `avalanchego/build`. If you've followed the instructions so far, this will be within your `$GOPATH` at: `$GOPATH/src/github.com/ava-labs/avalanchego/build`.
+The binary, named `metalgo`, is in `metalgo/build`. If you've followed the instructions so far, this will be within your `$GOPATH` at: `$GOPATH/src/github.com/!metal!blockchain/metalgo/build`.
 
 To begin running MetalGo, run the following (hit Ctrl+C to stop your node):
 
@@ -93,20 +93,20 @@ To begin running MetalGo, run the following (hit Ctrl+C to stop your node):
 
 #### **Binary**
 
-If you want to download a pre-built binary instead of building it yourself, go to our [releases page](https://github.com/ava-labs/avalanchego/releases), and select the release you want (probably the latest one.)
+If you want to download a pre-built binary instead of building it yourself, go to our [releases page](https://github.com/MetalBlockchain/metalgo/releases), and select the release you want (probably the latest one.)
 
 Under `Assets`, select the appropriate file.
 
-For MacOS: Download: `avalanchego-macos-<VERSION>.zip`
-Unzip: `unzip avalanchego-macos-<VERSION>.zip` The resulting folder, `avalanchego-<VERSION>`, contains the binaries.
+For MacOS: Download: `metalgo-macos-<VERSION>.zip`
+Unzip: `unzip metalgo-macos-<VERSION>.zip` The resulting folder, `metalgo-<VERSION>`, contains the binaries.
 
-For Linux on PCs or cloud providers: Download: `avalanchego-linux-amd64-<VERSION>.tar.gz`
-Unzip: `tar -xvf avalanchego-linux-amd64-<VERSION>.tar.gz`
-The resulting folder, `avalanchego-<VERSION>-linux`, contains the binaries.
+For Linux on PCs or cloud providers: Download: `metalgo-linux-amd64-<VERSION>.tar.gz`
+Unzip: `tar -xvf metalgo-linux-amd64-<VERSION>.tar.gz`
+The resulting folder, `metalgo-<VERSION>-linux`, contains the binaries.
 
-For Linux on RaspberryPi4 or similar Arm64-based computers: Download: `avalanchego-linux-arm64-<VERSION>.tar.gz`
-Unzip: `tar -xvf avalanchego-linux-arm64-<VERSION>.tar.gz`
-The resulting folder, `avalanchego-<VERSION>-linux`, contains the binaries.
+For Linux on RaspberryPi4 or similar Arm64-based computers: Download: `metalgo-linux-arm64-<VERSION>.tar.gz`
+Unzip: `tar -xvf metalgo-linux-arm64-<VERSION>.tar.gz`
+The resulting folder, `metalgo-<VERSION>-linux`, contains the binaries.
 
 ### Start a Node, and Connect to Metal
 
@@ -119,13 +119,13 @@ If you built from source:
 If you are using the pre-built binaries on MacOS:
 
 ```sh
-./avalanchego-<VERSION>/build/metalgo
+./metalgo-<VERSION>/build/metalgo
 ```
 
 If you are using the pre-built binaries on Linux:
 
 ```sh
-./avalanchego-<VERSION>-linux/metalgo
+./metalgo-<VERSION>-linux/metalgo
 ```
 
 By default (without specifying any parameters), this node will connect to the Mainnet which may take much longer time to finish bootstrapping. See [this](#connect-to-tahoe-testnet) for connecting to Tahoe Testnet.

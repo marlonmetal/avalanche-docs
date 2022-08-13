@@ -23,7 +23,7 @@ Version: 0.8.9+commit.e5eed63a.Linux.g++
 Build abigen.
 
 ```shell
-# cd ~/go/src/github.com/ava-labs/avalanche
+# cd ~/go/src/github.com/MetalBlockchain/metalgo
 # go build -o abigen cmd/abigen/main.go
 # cp abigen ~/bin
 ```
@@ -38,7 +38,7 @@ This will produce `counter.go` suitable to interact with contract.
 
 ## Example Code
 
-Setup the connection to `avalanchego`, then deploy, call, and fetch values from the contract.
+Setup the connection to `metalgo`, then deploy, call, and fetch values from the contract.
 
 Abigen offers more features for complicated contracts, the following is provided as an example to get started using the basic contract
 
@@ -52,13 +52,13 @@ import (
 	"strings"
 	"time"
 
-	"github.com/ava-labs/avalanchego/utils/constants"
-	"github.com/ava-labs/avalanchego/utils/formatting"
-	"github.com/ava-labs/coreth/accounts/abi/bind"
-	"github.com/ava-labs/coreth/core/types"
-	"github.com/ava-labs/coreth/ethclient"
-	"github.com/ava-labs/coreth/params"
-	"github.com/ava-labs/coreth/rpc"
+	"github.com/MetalBlockchain/metalgo/utils/constants"
+	"github.com/MetalBlockchain/metalgo/utils/formatting"
+	"github.com/MetalBlockchain/coreth/accounts/abi/bind"
+	"github.com/MetalBlockchain/coreth/core/types"
+	"github.com/MetalBlockchain/coreth/ethclient"
+	"github.com/MetalBlockchain/coreth/params"
+	"github.com/MetalBlockchain/coreth/rpc"
 	"github.com/decred/dcrd/dcrec/secp256k1/v3"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/crypto"
