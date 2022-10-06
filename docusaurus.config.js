@@ -65,12 +65,12 @@ const config = {
             sidebarId: 'overview',
             label: 'Overview',
           },
-          // {
-          //   type: 'docSidebar',
-          //   position: 'left',
-          //   sidebarId: 'quickStart',
-          //   label: 'Quick Start',
-          // },     
+          {
+            type: 'docSidebar',
+            position: 'left',
+            sidebarId: 'quickStart',
+            label: 'Quick Start',
+          },     
           /* {
             type: 'docSidebar',
             position: 'left',
@@ -96,12 +96,12 @@ const config = {
             sidebarId: 'nodes',
             label: 'Nodes',
           }, 
-          /* {
+          {
             type: 'docSidebar',
             position: 'left',
             sidebarId: 'specs',
             label: 'Specs',
-          },  */
+          },
          /*  {
             type: 'docSidebar',
             position: 'left',
